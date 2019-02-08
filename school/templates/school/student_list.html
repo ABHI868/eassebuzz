@@ -1,0 +1,16 @@
+{% extends "school/base.html" %}
+
+{% block content %}
+  <h1> List of Students</h1>
+  {% if student_list %}
+  <ul>
+    {% for student in student_list %}
+      <li>
+        <a href="{{ student.get_absolute_url }}">{{ student.profile.user.username }}</a> 
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No Student record found.</p>
+  {% endif %}       
+{% endblock %}

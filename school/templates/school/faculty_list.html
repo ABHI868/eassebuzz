@@ -1,0 +1,16 @@
+{% extends "school/base.html" %}
+
+{% block content %}
+  <h1> List of Faculty</h1>
+  {% if faculty_list %}
+  <ul>
+    {% for faculty in faculty_list %}
+      <li>
+        <a href="{{ faculty.get_absolute_url }}">{{ faculty.profile.user.username }}</a> 
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No faculty record found.</p>
+  {% endif %}       
+{% endblock %}

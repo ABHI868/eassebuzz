@@ -1,0 +1,11 @@
+{% extends 'school/base.html' %}
+
+{% block content %}
+  <h1>Welcome to St. John School</h1>
+  <p>The School has the following record counts:</p>
+  <ul>
+    <li><strong>Students:</strong> {{ num_students }}</li>
+    <li><strong>Faculties:</strong> {{ num_faculty }}</li>
+    <li><strong>Classrooms:</strong> {{ num_classroom }}</li>
+  </ul>
+{% endblock %}
