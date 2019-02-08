@@ -11,6 +11,7 @@ class StudentCreate(CreateView):
 
 class StudentDeleteView(DeleteView):
     model=Student
+    template_name='school/student_detail.html'
     
 
 def index(request):

@@ -1,24 +1,11 @@
-{% extends "base.html" %}
+{% extends "school/base.html" %}
 
 {% block content %}
 
-  <p><strong>Name:</strong> <a href="">{{student. }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Name:</strong> <a href="">{{student.profile.user.username }}</a></p> 
   
-  <p><strong>House:</strong> {{ book.isbn }}</p> 
-  <p><strong>Age:</strong> {{ book.language }}</p>  
-  <p><strong>Contact:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>  
-
-  <div style="margin-left:20px;margin-top:20px">
-    <h4>Copies</h4>
-
-    {% for copy in book.bookinstance_set.all %}
-      <hr>
-      <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">{{ copy.get_status_display }}</p>
-      {% if copy.status != 'a' %}
-        <p><strong>Due to be returned:</strong> {{copy.due_back}}</p>
-      {% endif %}
-      <p><strong>Imprint:</strong> {{copy.imprint}}</p>
-      <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
-    {% endfor %}
-  </div>
+  <p><strong>Address:</strong> {{ student.profile.address }}</p> 
+  <p><strong>Age:</strong> {{ student.age }}</p>  
+  <p><strong>Contact:</strong>{{student.profile.contact_no}}</p>  
+  <p><strong>Enrolement Date:</strong> {{ student.enrolement_date }}</p> 
 {% endblock %}

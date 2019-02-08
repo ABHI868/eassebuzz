@@ -6,7 +6,7 @@
   <ul>
     {% for student in student_list %}
       <li>
-        <a href="{{ student.get_absolute_url }}">{{ student.profile.user.username }}</a> 
+        <a href="{% url 'student-detail' student.profile.user.id %}">{{ student.profile.user.username }}</a> 
       </li>
     {% endfor %}
   </ul>
