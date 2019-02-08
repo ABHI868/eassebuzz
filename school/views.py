@@ -1,6 +1,17 @@
 from django.shortcuts import render
 from school.models import Student,Classroom,Faculty
 from django.views import generic
+from django.views.generic.edit import CreateView,DeleteView
+from django.urls import reverse_lazy
+
+class StudentCreate(CreateView):
+    model=Student
+    fields="__all__"
+    template_name='school/student_form.html'
+
+class StudentDeleteView(DeleteView):
+    model=Student
+    
 
 def index(request):
     num_students=Student.objects.count()
