@@ -1,8 +1,31 @@
 from django.shortcuts import render
-from school.models import Student,Classroom,Faculty
+from school.models import Student,Classroom,Faculty,Profile
 from django.views import generic
 from django.views.generic.edit import CreateView,DeleteView
 from django.urls import reverse_lazy
+from .forms import editProfileForm
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def editprofile(request):
+    if request.method == 'POST':
+        form = editProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect ("/login/")
+    else:
+        form=editProfileForm(instance=request.user)
+        args={'form':form}
+        return render(request,'school/editprofile.html',args)
+        
+def profile(request):
+    args={'user':request.user}
+    print(request.user.first_name)
+    return render(request,"school/profile.html",args)
+
+class CreateProfile(CreateView):
+    model=Profile
+    fields='__all__'
 
 class StudentCreate(CreateView):
     model=Student
